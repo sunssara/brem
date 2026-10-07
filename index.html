@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101113">
+<title>BREM group — оборудование, ПО и сервисные услуги</title>
+<meta name="description" content="BREM group — поставка компьютерного оборудования, программного обеспечения и сервисные услуги. Свяжитесь с нами: info@brem.kz, +7 (7172) 72-49-52, +7 (747) 72-495-47.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath fill='%23ff5264' d='M5 8h11l8 12-8 12H5l8-12zm15 0h11l8 12-8 12H20l8-12z'/%3E%3C/svg%3E">
+<style>
+:root{color-scheme:dark;--bg:#101113;--ink:#f3f2ef;--muted:#a5a7ac;--line:#2b2d32;--accent:#ff5264}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}a:focus-visible{outline:2px solid var(--accent);outline-offset:7px;border-radius:3px}
+.shell{max-width:1440px;margin:auto;padding:0 64px}
+header{height:122px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+.identity{display:flex;align-items:center;gap:17px}.logo{position:relative;width:174px;height:40px;overflow:hidden}.logo img{position:absolute;width:302px;height:176px;max-width:none;left:-64px;top:-68px}.group{font-size:13px;letter-spacing:.18em;color:#c5c6c9;padding-left:16px;border-left:1px solid #505156}
+.status{display:flex;align-items:center;gap:10px;color:#c5c6c9;font-size:12px;letter-spacing:.025em}.status i{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px #ff52640c}
+.hero{position:relative;display:grid;grid-template-columns:1.3fr 1fr;align-items:center;min-height:595px;padding:66px 0 60px;isolation:isolate}
+.eyebrow{display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.18em;font-weight:700;color:#b9bbc0}.eyebrow:before{content:"";width:24px;height:2px;background:var(--accent)}
+h1{font-size:clamp(40px,4.8vw,68px);line-height:1.05;letter-spacing:-.055em;margin:27px 0 24px;font-weight:600}h1 span{color:var(--accent)}
+.intro{max-width:510px;color:var(--muted);font-size:16px;line-height:1.75;margin:0 0 30px}
+.cta{display:inline-flex;align-items:center;justify-content:space-between;gap:40px;padding:18px 24px;background:var(--accent);color:#111216;font-size:14px;font-weight:700;border-radius:3px;transition:background .2s,transform .2s}.cta:hover{background:#ff7180;transform:translateY(-2px)}.cta svg{width:18px;height:18px}
+.art{position:relative;align-self:stretch;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-left:12px}
+.art:before{position:absolute;inset:0;content:"";background:radial-gradient(ellipse at 60% 48%,#ff52640c,transparent 65%)}
+.art svg{width:100%;max-width:470px;height:auto;position:relative}
+.art-caption{position:absolute;bottom:14px;right:5px;color:#6e7179;font-size:10px;letter-spacing:.18em;display:flex;align-items:center;gap:12px}.art-caption:before{content:"";width:35px;height:1px;background:#41444b}
+.services{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:27px 0}
+.service{display:flex;align-items:center;gap:20px;padding:4px 28px;border-left:1px solid var(--line)}.service:first-child{padding-left:0;border:0}.service:last-child{padding-right:0}.num{color:var(--accent);font-size:11px;letter-spacing:.08em;font-family:monospace}.service h2{font-size:15px;font-weight:400;line-height:1.5;margin:0}
+.contact{display:grid;grid-template-columns:1fr 1.05fr 1fr;gap:30px;padding:43px 0 46px;align-items:start}.contact-title{font-size:23px;line-height:1.3;letter-spacing:-.025em;margin:0 0 9px;font-weight:500}.contact p{font-size:13px;color:var(--muted);margin:0;line-height:1.6}.label{font-size:10px;color:#83868e;letter-spacing:.16em;display:block;margin:2px 0 14px}.email{font-size:25px;letter-spacing:-.035em;display:inline-flex;gap:22px;align-items:center}.email span{color:var(--accent);font-size:24px}.contact a:hover{color:var(--accent)}.phones{display:flex;flex-direction:column;gap:9px;font-size:17px;letter-spacing:.015em}
+footer{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:23px 0 28px;border-top:1px solid var(--line);color:#757881;font-size:11px;letter-spacing:.025em}
+@media(min-width:1600px){.hero{min-height:660px}.shell{padding:0 80px}}
+@media(max-width:1000px){.shell{padding:0 36px}.hero{min-height:560px;grid-template-columns:1.4fr 1fr}h1{font-size:52px}.intro{font-size:15px}.service{padding:4px 18px;gap:14px}.service h2{font-size:13px}.contact{grid-template-columns:1fr 1fr;row-gap:28px}.contact>div:first-child{grid-column:1/-1}.art-caption{font-size:8px}}
+@media(max-width:650px){.shell{padding:0 24px}header{height:100px}.identity{gap:5px}.logo{width:122px;height:30px}.logo img{width:211.4px;height:123.2px;left:-44.8px;top:-47.6px}.group{font-size:10px;padding-left:10px;letter-spacing:.12em}.status{max-width:96px;font-size:10px;line-height:1.5;gap:9px}.status i{flex-shrink:0}
+.hero{display:block;min-height:auto;padding:47px 0 37px}.eyebrow{font-size:9px;letter-spacing:.13em}h1{font-size:clamp(37px,9.5vw,58px);line-height:1.08;margin:25px 0 22px;letter-spacing:-.055em}.intro{font-size:14px;line-height:1.8;max-width:450px}.cta{padding:17px 22px;gap:38px}.art{height:200px;margin:26px 0 -8px}.art svg{width:245px}.art-caption{right:0;bottom:5px;font-size:8px}.services{grid-template-columns:1fr;padding:7px 0}.service,.service:first-child,.service:last-child{border-left:0;border-bottom:1px solid var(--line);padding:18px 0;gap:23px}.service:last-child{border-bottom:0}.service h2{font-size:14px}.contact{grid-template-columns:1fr;gap:29px;padding:34px 0}.contact>div:first-child{grid-column:auto}.contact-title{font-size:25px}.label{margin-bottom:11px}.email{font-size:27px}.phones{font-size:18px;gap:13px}footer{align-items:flex-start;flex-direction:column;gap:9px;padding:22px 0 26px;font-size:10px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cta{transition:none}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header>
+<a class="identity" href="/" aria-label="BREM group — главная"><span class="logo"><img src="data:image/png;base64,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" alt="BREM" width="151" height="88"></span><span class="group">GROUP</span></a>
+<div class="status"><i aria-hidden="true"></i><span>Сайт в разработке</span></div>
+</header>
+<main>
+<section class="hero" aria-labelledby="main-title">
+<div>
+<div class="eyebrow">IT-РЕШЕНИЯ ДЛЯ БИЗНЕСА</div>
+<h1 id="main-title">Технологии,<br>на которые можно<br><span>положиться.</span></h1>
+<p class="intro">BREM group — поставка компьютерного оборудования, программного обеспечения и&nbsp;сервисные услуги для&nbsp;вашего бизнеса.</p>
+<a class="cta" href="mailto:info@brem.kz">Связаться с нами <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 12h15M13 5l7 7-7 7"/></svg></a>
+</div>
+<div class="art" aria-hidden="true">
+<svg viewBox="0 0 480 470" fill="none">
+<defs><linearGradient id="coral" x1="100" y1="80" x2="390" y2="370" gradientUnits="userSpaceOnUse"><stop stop-color="#ff7a88"/><stop offset="1" stop-color="#ff4058"/></linearGradient><linearGradient id="outline" x1="100" y1="90" x2="430" y2="420" gradientUnits="userSpaceOnUse"><stop stop-color="#ff5264" stop-opacity=".52"/><stop offset="1" stop-color="#ff5264" stop-opacity=".06"/></linearGradient></defs>
+<g stroke="#25272b" stroke-width="1"><path d="M40 90h410M40 180h410M40 270h410M40 360h410M100 45v380M190 45v380M280 45v380M370 45v380" stroke-dasharray="2 7"/><circle cx="246" cy="234" r="185"/><circle cx="246" cy="234" r="140"/></g>
+<g stroke="url(#outline)" stroke-width="1"><path d="M155 65h142l117 170-117 170H155l117-170z"/><path d="M174 84h112l104 151-104 151H174l104-151z"/><path d="M193 103h82l91 132-91 132h-82l91-132z"/></g>
+<path d="M67 142h80l64 93-64 93H67l64-93z" fill="url(#coral)"/>
+<path d="M169 142h80l64 93-64 93h-80l64-93z" fill="url(#coral)"/>
+<path d="M67 142h80l64 93M169 142h80l64 93" stroke="#ffa3ad" stroke-opacity=".6"/>
+<g fill="#8b4b52"><rect x="97" y="87" width="5" height="5"/><rect x="367" y="357" width="5" height="5"/></g>
+</svg>
+<div class="art-caption">HARDWARE / SOFTWARE / SERVICE</div>
+</div>
+</section>
+<section class="services" aria-label="Направления деятельности">
+<div class="service"><span class="num">01 /</span><h2>Компьютерное оборудование</h2></div>
+<div class="service"><span class="num">02 /</span><h2>Программное обеспечение</h2></div>
+<div class="service"><span class="num">03 /</span><h2>Сервисные услуги</h2></div>
+</section>
+<section class="contact" aria-label="Контакты">
+<div><h2 class="contact-title">Обсудим вашу задачу</h2><p>Наш сайт обновляется.<br>А мы уже на связи.</p></div>
+<div><span class="label">НАПИШИТЕ НАМ</span><a class="email" href="mailto:info@brem.kz">info@brem.kz <span aria-hidden="true">↗</span></a></div>
+<div><span class="label">ПОЗВОНИТЕ НАМ</span><div class="phones"><a href="tel:+77172724952">+7 (7172) 72-49-52</a><a href="tel:+77477249547">+7 (747) 72-495-47</a></div></div>
+</section>
+</main>
+<footer><span>© 2026 BREM group</span><span>Оборудование. Программное обеспечение. Сервис.</span></footer>
+</div>
+</body>
+</html>
