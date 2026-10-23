@@ -580,14 +580,14 @@ html[lang=kk] .company-copy h2{font-size:clamp(32px,3vw,41px);line-height:1.2}
 .directions .section-top{flex-wrap:wrap;gap:24px 40px;align-items:flex-end}
 .directions .section-top>div{max-width:100%}
 .directions .section-top>p{max-width:none;margin:0;white-space:nowrap}
-.approach-heading>.workflow-intro{flex:0 1 410px;max-width:410px;align-self:flex-end;margin:0;padding-bottom:3px;text-align:left}
-.workflow-intro p{margin:0;text-align:left;text-wrap:pretty}
+.approach-heading>.workflow-intro{flex:0 1 auto;width:max-content;max-width:44%;align-self:flex-end;margin:0 0 0 auto;padding-bottom:3px;text-align:left}
+.workflow-intro p{margin:0;text-align:left;text-wrap:wrap}
 .detail-vendors{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 32px;padding:0 0 28px;border-bottom:1px solid var(--line)}
 .detail-vendors .vendor{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;flex:0 1 142px;min-height:100px;padding:16px 12px;border:1px solid var(--line);border-radius:12px;background:transparent;color:var(--ink)}
 .detail-vendors .vendor svg{width:106px;height:34px;filter:grayscale(1);opacity:.85;transition:filter .25s,opacity .25s}
 .detail-vendors .vendor span{position:static;width:auto;height:auto;clip-path:none;overflow:visible;font:400 10px/1.4 var(--body);color:var(--muted);text-align:center}
 .detail-vendors .vendor:hover svg{filter:grayscale(0);opacity:1}
-@media(max-width:800px){.approach-heading>.workflow-intro{flex:auto;max-width:none;width:100%;align-self:stretch;margin-top:16px}.directions .section-top>p{white-space:normal;text-wrap:pretty}.detail-vendors{gap:8px}.detail-vendors .vendor{flex-basis:calc(50% - 4px);min-height:92px}}
+@media(max-width:800px){.approach-heading>.workflow-intro{flex:auto;max-width:none;width:100%;align-self:stretch;margin:16px 0 0}.directions .section-top>p{white-space:normal;text-wrap:pretty}.detail-vendors{gap:8px}.detail-vendors .vendor{flex-basis:calc(50% - 4px);min-height:92px}}
 .contact-card .email{font-size:clamp(36px,3.5vw,48px);line-height:1.2;color:var(--red);gap:24px}
 .contact-card .email:hover{color:#cb3040}
 .contact-card .email .ui-arrow{width:26px;height:26px;flex-shrink:0}
