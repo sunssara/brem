@@ -332,9 +332,14 @@ html[lang=kk] .company-copy h2{font-size:clamp(32px,3vw,41px);line-height:1.2}
 .contact-card .phones a{display:flex;width:100%;justify-content:space-between;gap:24px}.contact-card .phones .ui-arrow{width:26px;height:26px;flex-shrink:0;color:var(--red)}
 .detail-panel .detail-vendors{margin:24px 0 28px;padding:0;border-bottom:0}
 
-#contacts-heading{font-size:clamp(42px,3.6vw,54px);line-height:1.1;letter-spacing:-.045em}
-@media(max-width:950px){#contacts-heading{font-size:clamp(34px,4.7vw,44px)}}
-@media(max-width:700px){#contacts-heading{font-size:clamp(33px,8.6vw,44px);line-height:1.14}}
+/* Shared section hierarchy in all three languages. */
+:root{--section-heading-size:clamp(36px,3.4vw,48px);--section-heading-secondary-size:clamp(30px,2.5vw,36px);--section-heading-weight:600;--section-heading-tracking:-.045em;--section-heading-leading:1.15}
+:is(#about-heading,#solutions-heading,#services-heading,#contacts-heading,#vendors-heading,#supply-heading){font-family:var(--head);font-size:var(--section-heading-size);font-weight:var(--section-heading-weight);line-height:var(--section-heading-leading);letter-spacing:var(--section-heading-tracking)}
+:is(#vendors-heading,#supply-heading){font-size:var(--section-heading-secondary-size)}
+html[lang=kk] :is(#about-heading,#solutions-heading,#services-heading,#contacts-heading,#vendors-heading,#supply-heading){font-family:Inter,sans-serif}
+@media(min-width:951px){html[lang=kk] #solutions-heading{max-width:none;white-space:nowrap}}
+@media(max-width:950px){:root{--section-heading-size:clamp(34px,4.7vw,44px)}}
+@media(max-width:700px){:root{--section-heading-size:clamp(30px,8.2vw,36px);--section-heading-secondary-size:clamp(27px,7.2vw,32px)}}
 
 .footer,.footer .footer-company,.footer .footer-links{align-items:flex-start}.footer .footer-links a,.footer .footer-links button{align-items:flex-start;line-height:1.75;padding-top:0;margin-top:0}.footer .footer-description,.footer .footer-copyright{line-height:1.75;margin-top:0}
 html[lang=kk] .hero h1 .title-it,html[lang=kk] .hero h1 .title-equipment{display:inline}.hero h1 .title-equipment{white-space:nowrap}
