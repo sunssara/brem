@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /request.php
+
+Sitemap: https://brem.kz/sitemap.xml
