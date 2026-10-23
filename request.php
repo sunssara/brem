@@ -20,7 +20,11 @@ set_exception_handler(function (Throwable $error): void {
 });
 
 session_name('brem_request');
-session_set_cookie_params(['lifetime' => 0, 'path' => '/', 'secure' => true, 'httponly' => true, 'samesite' => 'Strict']);
+if (PHP_VERSION_ID >= 70300) {
+    session_set_cookie_params(['lifetime' => 0, 'path' => '/', 'secure' => true, 'httponly' => true, 'samesite' => 'Strict']);
+} else {
+    session_set_cookie_params(0, '/; samesite=Strict', '', true, true);
+}
 ini_set('session.use_strict_mode', '1');
 if (!session_start()) {
     respond(503, ['ok' => false, 'message' => 'Форма временно недоступна. Напишите на info@brem.kz.']);
@@ -69,9 +73,11 @@ if ($method !== 'POST') {
     header('Allow: GET, POST');
     respond(405, ['ok' => false, 'message' => 'Метод не поддерживается.']);
 }
-if ((int)($_SERVER['CONTENT_LENGTH'] ?? 0) > 20000) {
-    respond(413, ['ok' => false, 'message' => 'Слишком длинное сообщение.']);
+if ((int)($_SERVER['CONTENT_LENGTH'] ?? 0) > 12 * 1024 * 1024) {
+    respond(413, ['ok' => false, 'message' => 'Размер файла превышает 10 МБ.', 'errors' => ['specification' => 'Размер файла превышает 10 МБ.']]);
 }
+if ((int)($_SERVER['CONTENT_LENGTH'] ?? 0) > 0 && empty($_POST) && empty($_FILES)) respond(413, ['ok'=>false,'message'=>'Размер файла превышает 10 МБ.','errors'=>['specification'=>'Размер файла превышает 10 МБ.']]);
+require_once __DIR__ . '/request-validation.php';
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
 if ($origin !== '' && !in_array($origin, ['https://brem.kz', 'https://www.brem.kz'], true)) {
     respond(403, ['ok' => false, 'message' => 'Обновите страницу и повторите отправку.']);
@@ -99,12 +105,14 @@ $consent = field('consent', 10);
 if ($honeypot !== '' || time() - (int)$_SESSION['issued'] < 2) {
     respond(422, ['ok' => false, 'message' => 'Пожалуйста, проверьте поля и повторите отправку через несколько секунд.']);
 }
-if ($name === '' || !filter_var($email, FILTER_VALIDATE_EMAIL) || preg_match('/[\r\n]/', $email) || $consent !== 'yes') {
-    respond(422, ['ok' => false, 'message' => 'Укажите имя, корректный e-mail и согласие на обработку данных.']);
-}
-if ($phone === '' || !preg_match('/^[+0-9()\s.\-]{5,40}$/', $phone) || strlen(preg_replace('/\D/', '', $phone)) < 5) {
-    respond(422, ['ok' => false, 'message' => 'Проверьте номер телефона.']);
-}
+$errors = [];
+if ($name === '') $errors['name'] = 'Укажите имя.';
+if (!filter_var($email, FILTER_VALIDATE_EMAIL) || preg_match('/[\r\n]/', $email)) $errors['email'] = 'Укажите корректный email.';
+if ($consent !== 'yes') $errors['consent'] = 'Подтвердите согласие на обработку данных.';
+if ($phone !== '' && (!preg_match('/^[+0-9()\s.\-]{5,40}$/', $phone) || strlen(preg_replace('/\D/', '', $phone)) < 5)) $errors['phone'] = 'Проверьте номер телефона.';
+$attachment = brem_attachment();
+if ($message === '' && !$attachment) $errors['message'] = 'Опишите задачу или приложите спецификацию.';
+if ($errors) respond(422, ['ok'=>false, 'message'=>'Проверьте отмеченные поля.', 'errors'=>$errors]);
 $allowed = ['Помогите выбрать решение','Вычислительная инфраструктура','Корпоративные сети','Инженерные системы','Информационная безопасность','Техническая безопасность','Мультимедиа и AV-системы','Корпоративные коммуникации','Оборудование и ПО','Сервис и сопровождение'];
 if (!in_array($service, $allowed, true)) {
     respond(422, ['ok' => false, 'message' => 'Выберите направление из списка.']);
@@ -176,18 +184,19 @@ flock($handle, LOCK_UN); fclose($handle);
 $reference = 'BR-' . gmdate('ymd') . '-' . strtoupper(bin2hex(random_bytes(3)));
 $body = "Новая заявка с brem.kz\nНомер: $reference\n\nИмя: $name\nКомпания: $company\nE-mail: $email\nТелефон: $phone\nНаправление: $service\n\nЗадача:\n$message\n\nСогласие на обработку данных: получено\n";
 $subject = '=?UTF-8?B?' . base64_encode('BREM — заявка с сайта ' . $reference) . '?=';
+$mime = brem_mail_content($body, $attachment);
 $headers = [
     'From' => 'BREM Website <info@brem.kz>',
     'Reply-To' => $email,
     'MIME-Version' => '1.0',
-    'Content-Type' => 'text/plain; charset=UTF-8',
-    'Content-Transfer-Encoding' => 'base64',
+    'Content-Type' => $mime['type'],
+    'Content-Transfer-Encoding' => $mime['encoding'],
     'X-BREM-Request' => $reference
 ];
-$accepted = function_exists('mail') && @mail('info@brem.kz', $subject, chunk_split(base64_encode($body), 76, "\r\n"), $headers);
+$accepted = function_exists('mail') && @mail('info@brem.kz', $subject, $mime['body'], $headers);
 if (!$accepted) {
     error_log('BREM mail transport rejected request ' . $reference);
-    respond(503, ['ok' => false, 'message' => 'Не удалось отправить запрос. Напишите на info@brem.kz или позвоните +7 (7172) 72-49-52.']);
+    respond(503, ['ok' => false, 'message' => 'Не удалось отправить запрос. Напишите на info@brem.kz или свяжитесь с нами в WhatsApp: 8 708 147 07 85.']);
 }
 unset($_SESSION['csrf'], $_SESSION['issued'], $_SESSION['challenges']);
 respond(200, ['ok' => true, 'reference' => $reference]);
