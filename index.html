@@ -344,6 +344,15 @@ html[lang=kk] :is(#about-heading,#solutions-heading,#services-heading,#contacts-
 .footer,.footer .footer-company,.footer .footer-links{align-items:flex-start}.footer .footer-links a,.footer .footer-links button{align-items:flex-start;line-height:1.75;padding-top:0;margin-top:0}.footer .footer-description,.footer .footer-copyright{line-height:1.75;margin-top:0}
 html[lang=kk] .hero h1 .title-it,html[lang=kk] .hero h1 .title-equipment{display:inline}.hero h1 .title-equipment{white-space:nowrap}
 #about-heading .heading-it{display:inline;color:var(--red)}
+
+/* A quiet contact card keeps the two actions together and the address secondary. */
+.collaboration .contact-card{min-width:0;align-self:start;background:#fff;border:1px solid #e6e9e1;border-radius:24px;padding:32px;box-shadow:0 12px 36px #20272205}
+.contact-card .email{min-height:44px;max-width:none;align-items:center}
+.contact-card .phones{margin-top:16px;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid #eceee8}
+.contact-card address{max-width:none}
+@media(max-width:950px){.collaboration{grid-template-columns:1fr;gap:32px}}
+@media(max-width:700px){.collaboration .contact-card{padding:24px;border-radius:20px}.contact-card .phones{margin-top:12px;margin-bottom:20px;padding-bottom:20px}}
+@media(max-width:359px){.collaboration .contact-card{padding:20px}.contact-card .email,.contact-card .phones a{gap:12px}}
 </style><style id="typography">/* Shared type roles. Layout, brand colours and the approved hero line breaks stay independent. */
 :root{
  --type-card:22px;--type-subtitle:16px;--type-dialog:32px;
