@@ -626,7 +626,7 @@ html[lang=kk] .hero h1 .title-it,html[lang=kk] .hero h1 .title-equipment{display
 @media(max-width:700px){.collaboration .contact-card{padding:24px;border-radius:20px}.contact-card .phones{margin-top:12px;margin-bottom:20px;padding-bottom:20px}}
 @media(max-width:359px){.collaboration .contact-card{padding:20px}.contact-card .email,.contact-card .phones a{gap:12px}}
 
-.vendor-note{margin:28px 0 0;font:400 13px/1.5 var(--body);color:#697269;max-width:650px}
+.vendor-note{margin:28px 0 0;font:400 13px/1.5 var(--body);color:#697269;max-width:none}
 .vendor-belt .vendor[aria-label="Palo Alto Networks"]{color:#f04e23}.vendor-belt .vendor[aria-label="NetApp"]{color:#0067c5}.vendor-belt .vendor[aria-label="HP"]{color:#0096d6}
 
 html[lang] .detail-vendors .vendor-name-only span{font:600 15px/1.4 var(--body);color:var(--ink);letter-spacing:-.01em;overflow-wrap:anywhere}
